@@ -26,9 +26,16 @@ const Login = () => {
 
             if (loginError) {
                 console.error('[Login] Error de credenciales:', loginError.message);
-                setError(loginError.message === 'Invalid login credentials'
-                    ? 'El correo o la contraseña son incorrectos.'
-                    : 'Error: ' + loginError.message);
+
+                let userFriendlyError = loginError.message;
+
+                if (loginError.message === 'Invalid login credentials') {
+                    userFriendlyError = 'El correo o la contraseña son incorrectos.';
+                } else if (loginError.message.includes('Email not confirmed')) {
+                    userFriendlyError = '⚠️ Tu correo aún no ha sido confirmado. Por favor, revisa tu bandeja de entrada o intenta registrarte de nuevo en unos minutos.';
+                }
+
+                setError(userFriendlyError);
                 setIsSubmitting(false);
                 return;
             }
