@@ -1,0 +1,408 @@
+/* Existing specific Home CSS plus additions */
+.hero {
+    padding: 6rem 0;
+    text-align: center;
+    background-color: var(--color-primary-dark);
+    background-image: linear-gradient(to bottom right, var(--color-primary-dark), var(--color-primary));
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+}
+
+.hero-text {
+    font-size: 1.125rem;
+    color: var(--color-white);
+    opacity: 0.8;
+    margin-bottom: 3rem;
+    font-style: italic;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+@media (min-width: 640px) {
+    .hero-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+.hero-btn {
+    padding: 1rem 1.75rem;
+    font-size: 1rem;
+}
+
+.hero-btn-outline {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--color-white);
+}
+
+.hero-btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-white);
+}
+
+/* Manifiesto Ciudadano Section */
+.manifiesto-section {
+    padding: 6rem 1.5rem;
+    background-color: var(--color-white);
+    text-align: center;
+    position: relative;
+}
+
+.manifiesto-ornament {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #006847 33%, #FFFFFF 33%, #FFFFFF 66%, #CE1126 66%);
+    margin: 0 auto 2rem auto;
+    border-radius: 2px;
+}
+
+.manifiesto-title {
+    font-size: 2.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 3rem;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+}
+
+.manifiesto-text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--color-text-main);
+    font-family: 'Georgia', serif;
+    /* Elegant serif for manifest */
+}
+
+.manifiesto-text p {
+    margin-bottom: 1.5rem;
+}
+
+.strong-opening {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.manifiesto-identity {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #CE1126;
+    /* subtly Patriotic Red */
+    margin: 2rem 0;
+}
+
+.manifiesto-highlight {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #006847;
+    /* Patriotic Green */
+    margin-top: 3rem;
+    font-style: italic;
+}
+
+/* Why Section */
+.why-section {
+    text-align: center;
+}
+
+.why-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.why-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.lead-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.why-content p:not(.lead-text) {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+}
+
+/* Live Counter Section */
+.counter-section {
+    background: linear-gradient(135deg, rgba(0, 104, 71, 0.95), rgba(30, 58, 138, 0.95)), url('https://images.unsplash.com/photo-1549558549-415fe4c37b60?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 5rem 0;
+    color: var(--color-white);
+    text-align: center;
+}
+
+.counter-digit {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    margin-bottom: 0.5rem;
+}
+
+/* El Poder de México - Quotes Section */
+.quotes-section {
+    position: relative;
+    padding: 6rem 0;
+    text-align: center;
+    background: url('https://images.unsplash.com/photo-1582046808794-0cfc9e290e25?auto=format&fit=crop&q=80') center/cover fixed no-repeat;
+    color: var(--color-white);
+}
+
+.quotes-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(30, 58, 138, 0.8) 0%, rgba(206, 17, 38, 0.7) 100%);
+    backdrop-filter: blur(3px);
+}
+
+.quotes-container {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.quotes-title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.quote-wrapper {
+    position: relative;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote-text {
+    position: absolute;
+    font-size: 1.75rem;
+    font-weight: 600;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+    transform: translateY(20px);
+    width: 100%;
+}
+
+.quote-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+    .quote-text {
+        font-size: 2.25rem;
+    }
+}
+
+/* Axes Section */
+.axes-section {
+    border-top: 1px solid var(--color-border);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.axes-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 640px) {
+    .axes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .axes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .axes-grid .axis-card:nth-child(4) {
+        grid-column: 1 / 3;
+        justify-self: end;
+        width: 100%;
+        max-width: 380px;
+    }
+
+    .axes-grid .axis-card:nth-child(5) {
+        grid-column: 2 / 4;
+        justify-self: start;
+        width: 100%;
+        max-width: 380px;
+    }
+}
+
+.axis-card {
+    background-color: var(--color-surface);
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    border-top: 4px solid var(--color-primary);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.axis-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.axis-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.axis-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.axis-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 5rem 1.5rem;
+    background-color: var(--color-background);
+    border-top: 1px solid var(--color-border);
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.cta-text {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+}
+
+.cta-highlight-box {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-left: 4px solid #C9A227;
+    /* Gold accent */
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    box-shadow: var(--shadow-sm);
+    text-align: left;
+}
+
+.cta-highlight-box p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.cta-highlight-box p:last-child {
+    font-weight: 800;
+    color: #006847;
+    margin-bottom: 0;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.cta-btn {
+    padding: 1rem 1.5rem;
+    font-size: 1.05rem;
+}
