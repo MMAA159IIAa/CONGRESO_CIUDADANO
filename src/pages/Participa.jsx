@@ -40,7 +40,14 @@ const Participa = () => {
                 navigate('/miembro');
             }, 4000);
         } catch (err) {
-            setError(err.message || 'Hubo un error al registrarse. Inténtalo de nuevo.');
+            let userFriendlyError = err.message || 'Hubo un error al registrarse. Inténtalo de nuevo.';
+
+            // Handle Supabase email rate limit specifically
+            if (err.message?.includes('rate limit')) {
+                userFriendlyError = '🚨 Límite de registros alcanzado por esta hora. El sistema de seguridad de correos se ha activado. Por favor, inténtalo de nuevo en 60 minutos o contacta al administrador.';
+            }
+
+            setError(userFriendlyError);
         }
     };
 
