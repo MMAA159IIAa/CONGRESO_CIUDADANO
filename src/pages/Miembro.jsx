@@ -157,6 +157,76 @@ const AdminAnnouncement = () => {
 };
 
 // ─────────────────────────────────────────────
+// Admin: Gestión de Votaciones (Iniciativas del Senado)
+// ─────────────────────────────────────────────
+const AdminVotacionesManager = () => {
+    const [title, setTitle] = useState('');
+    const [area, setArea] = useState('Vigilancia');
+    const [description, setDescription] = useState('');
+    const [date, setDate] = useState('');
+    const [isSaving, setIsSaving] = useState(false);
+    const [message, setMessage] = useState('');
+
+    const handleSave = async (e) => {
+        e.preventDefault();
+        setIsSaving(true);
+        const { error } = await supabase.from('votaciones').insert([{
+            title,
+            area,
+            description,
+            closing_date: date
+        }]);
+        setIsSaving(false);
+        if (error) {
+            setMessage('Error al guardar: ' + error.message);
+        } else {
+            setMessage('¡Iniciativa publicada con éxito!');
+            setTitle(''); setArea('Vigilancia'); setDescription(''); setDate('');
+        }
+        setTimeout(() => setMessage(''), 4000);
+    };
+
+    return (
+        <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', maxWidth: '600px' }}>
+            <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem', margin: 0 }}>Usa este formulario para subir propuestas oficiales o del Senado que el pueblo deba votar.</p>
+
+            <div className="form-group">
+                <label className="form-label">Título de la Iniciativa</label>
+                <input type="text" className="form-control" value={title} onChange={(e) => setTitle(e.target.value)} required placeholder="Ej: Reforma al Artículo 27..." />
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="form-group">
+                    <label className="form-label">Área / Comisión</label>
+                    <select className="form-control" value={area} onChange={(e) => setArea(e.target.value)}>
+                        <option value="Vigilancia">Vigilancia</option>
+                        <option value="Anticorrupción">Anticorrupción</option>
+                        <option value="Salud Pública">Salud Pública</option>
+                        <option value="Educación">Educación</option>
+                        <option value="Economía">Economía</option>
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label className="form-label">Fecha de Cierre</label>
+                    <input type="date" className="form-control" value={date} onChange={(e) => setDate(e.target.value)} required />
+                </div>
+            </div>
+
+            <div className="form-group">
+                <label className="form-label">Descripción Detallada (Explicación para el pueblo)</label>
+                <textarea className="form-control" style={{ minHeight: '120px' }} value={description} onChange={(e) => setDescription(e.target.value)} required placeholder="Explica de qué trata la ley en términos sencillos..." />
+            </div>
+
+            <button type="submit" className="btn btn-primary" disabled={isSaving} style={{ alignSelf: 'flex-start' }}>
+                {isSaving ? 'Publicando...' : '🚀 Publicar en Cabildo Digital'}
+            </button>
+
+            {message && <p style={{ fontSize: '0.9rem', color: message.includes('Error') ? '#DC2626' : '#1E8E3E', fontWeight: 600 }}>{message}</p>}
+        </form>
+    );
+};
+
+// ─────────────────────────────────────────────
 // MAIN MIEMBRO COMPONENT
 // ─────────────────────────────────────────────
 const Miembro = () => {
@@ -186,6 +256,7 @@ const Miembro = () => {
 
     const adminTabs = [
         { key: 'video', label: '🎬 Video', component: <AdminVideoConfig /> },
+        { key: 'votaciones', label: '🗳️ Votaciones', component: <AdminVotacionesManager /> },
         { key: 'miembros', label: '👥 Miembros', component: <AdminRoleManager /> },
         { key: 'anuncio', label: '📣 Anuncio', component: <AdminAnnouncement /> },
     ];
